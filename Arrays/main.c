@@ -287,8 +287,7 @@ struct Array* Intersection(struct Array* arr1, struct Array* arr2)
 	int i, j, k;
 	i = j = k = 0;
 
-	struct Array* arr3 = (struct Array
-		*)malloc(sizeof(struct Array));
+	struct Array* arr3 = (struct Array*)malloc(sizeof(struct Array));
 
 	while (i < arr1->length && j < arr2->length)
 	{
