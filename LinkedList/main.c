@@ -125,6 +125,29 @@ int RecursiveLinearSearch(struct Node *p, int key)
     RecursiveLinearSearch(p->next, key);
 }
 
+void Insert(struct Node *p, int index, int x)
+{
+    if (index < 0 || index > Count(p))
+        return;
+
+    struct Node *t = malloc(sizeof(struct Node));
+    t->data = x;
+
+    if (index == 0) 
+    {
+        t->next = first;
+        first = t;
+    }
+    else 
+    {
+        for (int i = 1; i < index; i++)
+            p = p->next;
+
+        t->next = p->next;
+        p->next = t;        
+    }
+}
+
 int main()
 {
     int a[] = { 2, 7, 15, 27, 32};
