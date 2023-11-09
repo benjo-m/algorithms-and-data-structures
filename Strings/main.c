@@ -45,7 +45,7 @@ void reverse(char s[])
 } 
 
 int main() {
-	char s[] = "benijamin";
+	char s[] = "teststring";
 
 	reverse(s);
 
