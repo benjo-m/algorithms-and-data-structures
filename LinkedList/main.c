@@ -179,6 +179,36 @@ void SortedInsert(struct Node *p, int x)
     }
 }
 
+int Delete(struct Node *p, int index)
+{
+    if (index < 0 || index >= Length(p))
+        return -1;
+
+    int x;
+    struct Node *q = NULL;
+    p = first;
+
+    if (index == 0)
+    {
+        x = p->data;
+        first = first->next;
+        free(p);
+        return x;
+    }
+
+    for (int i = 0; i < index; i++)
+    {
+        q = p;
+        p = p->next;
+    }
+
+    q->next = p->next;
+    x = p->data;
+    free(p);
+
+    return x;
+}
+
 int main()
 {
     Insert(first, 0, 10);
@@ -188,6 +218,6 @@ int main()
 
     SortedInsert(first, 40);
     SortedInsert(first, 30);
-    SortedInsert(first, 1);
-    Display(first);
+
+    printf("%d", Delete(first, 0));
 }
