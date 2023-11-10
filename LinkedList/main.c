@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Node
 {
@@ -209,15 +210,31 @@ int Delete(struct Node *p, int index)
     return x;
 }
 
+bool IsSorted(struct Node *p)
+{
+    p = first;
+
+    while (p->next != NULL)
+    {
+        if (p->data > p->next->data)
+            return false;
+            
+        p = p->next;
+    }
+
+    return true;
+}
+
 int main()
 {
     Insert(first, 0, 10);
     Insert(first, 1, 20);
     Insert(first, 2, 50);
     Insert(first, 3, 60);
+    Insert(first, 4, 5);
 
     SortedInsert(first, 40);
     SortedInsert(first, 30);
 
-    printf("%d", Delete(first, 0));
+    printf("%d", IsSorted(first));
 }
