@@ -221,16 +221,40 @@ bool IsSorted(struct Node *p)
     return true;
 }
 
+void RemoveDuplicates(struct Node *p)
+{
+    struct Node *q = p->next;
+
+    while (q != NULL)
+    {
+        if (q->data != p->data)
+        {
+            p = q;
+            q = q->next;
+        }
+        else
+        {
+            p->next = q->next;
+            free(q);
+            q = p->next;
+        }
+    }
+}
+
 int main()
 {
-    Insert(first, 0, 10);
-    Insert(first, 1, 20);
-    Insert(first, 2, 50);
-    Insert(first, 3, 60);
-    Insert(first, 4, 5);
+    Insert(first, 0, 1);
+    Insert(first, 1, 5);
+    Insert(first, 2, 5);
+    Insert(first, 3, 10);
+    Insert(first, 4, 16);
 
-    SortedInsert(first, 40);
-    SortedInsert(first, 30);
+    SortedInsert(first, 12);
+    SortedInsert(first, 12);
+    SortedInsert(first, 0);
 
-    printf("%d", IsSorted(first));
+    Display(first);
+    printf("\n");
+    RemoveDuplicates(first);
+    Display(first);
 }
