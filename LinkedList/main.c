@@ -148,13 +148,46 @@ void Insert(struct Node *p, int index, int x)
     }
 }
 
+void SortedInsert(struct Node *p, int x)
+{
+    struct Node *t = malloc(sizeof(struct Node));
+    t->data = x;
+    t->next = NULL;
+    struct Node *q = NULL;
+    p = first;
+
+    if (first == NULL)
+        first = t;
+    else
+    {
+        while (x > p->data && p != NULL)
+        {
+            q = p;
+            p = p->next;
+        }
+
+        if (p == first)
+        {
+            t->next = first;
+            first = t;
+        }
+        else
+        {
+            q->next = t;
+            t->next = p;
+        }
+    }
+}
+
 int main()
 {
-    int a[] = { 2, 7, 15, 27, 32};
+    Insert(first, 0, 10);
+    Insert(first, 1, 20);
+    Insert(first, 2, 50);
+    Insert(first, 3, 60);
 
-    Create(a, 5);
-
-    int c = RecursiveLinearSearch(first, 7);
-
-    printf("%d\n", c);
+    SortedInsert(first, 40);
+    SortedInsert(first, 30);
+    SortedInsert(first, 1);
+    Display(first);
 }
