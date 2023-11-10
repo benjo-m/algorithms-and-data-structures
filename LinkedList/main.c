@@ -36,7 +36,7 @@ void Display(struct Node *p)
     }
 }
 
-int Count(struct Node *p)
+int Length(struct Node *p)
 {
     int count = 0;
 
