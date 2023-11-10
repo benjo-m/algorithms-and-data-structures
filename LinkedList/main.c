@@ -155,7 +155,6 @@ void SortedInsert(struct Node *p, int x)
     t->data = x;
     t->next = NULL;
     struct Node *q = NULL;
-    p = first;
 
     if (first == NULL)
         first = t;
@@ -187,7 +186,6 @@ int Delete(struct Node *p, int index)
 
     int x;
     struct Node *q = NULL;
-    p = first;
 
     if (index == 0)
     {
@@ -212,8 +210,6 @@ int Delete(struct Node *p, int index)
 
 bool IsSorted(struct Node *p)
 {
-    p = first;
-
     while (p->next != NULL)
     {
         if (p->data > p->next->data)
