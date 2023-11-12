@@ -241,6 +241,22 @@ void RemoveDuplicates(struct Node *p)
     }
 }
 
+void Reverse(struct Node *p)
+{
+    struct Node *q = NULL;
+    struct Node *r = NULL;
+
+    while (p != NULL)
+    {
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+    }
+
+    first = q;
+}
+
 int main()
 {
     Insert(first, 0, 1);
@@ -254,7 +270,7 @@ int main()
     SortedInsert(first, 0);
 
     Display(first);
-    printf("\n");
-    RemoveDuplicates(first);
+    printf("\n"); 
+    Reverse(first);
     Display(first);
 }
