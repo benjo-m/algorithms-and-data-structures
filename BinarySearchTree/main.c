@@ -51,7 +51,26 @@ void Inorder(struct Node *p)
     }
 }
 
+struct Node* Search(int key)
+{
+    struct Node *t = root;
+
+    while (t != NULL)
+    {
+        if (t->data == key)
+            return t;
+        else if (t->data < key)
+            t = t->rchild;
+        else
+            t = t->lchild;
+    }
+
+    return NULL;
+}
+
 int main() {
+    struct Node *temp;
+    
     Insert(10);
     Insert(5);
     Insert(20);
@@ -59,5 +78,16 @@ int main() {
     Insert(30);
 
     Inorder(root);
+
+    
+    printf("\n");
+
+    temp = Search(22);
+
+    if (temp)
+        printf("element found: %d", temp->data);
+    else
+        printf("element is not found");
+
     return 0;
 }
